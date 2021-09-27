@@ -1,3 +1,4 @@
+import random
 # Create 3 game options
 category = {1: "Movies", 2:"TV Shows", 3:"Cartoons"}
 
@@ -7,5 +8,10 @@ dataset = {"Movies":["THE DARK KNIGHT", "JOKER", "THE GODFATHER", "GLADIATOR", "
                  "Cartoons":["DUCKTALES", "ANIMANIACS", "TRANSFORMERS", "THE REAL GHOSTBUSTERS", "THUNDERCATS", "SPONGEBOB SQUAREPANTS", "GRAVITY FALLS", "SMURFS"]
                  }
 
-print(category)
-print(dataset)
+ramdomwordm = random.choice(dataset["Movies"])
+ramdomwordt = random.choice(dataset["TV Shows"])
+ramdomwordc = random.choice(dataset["Cartoons"])
+print(ramdomwordm)
+print(ramdomwordt)
+print(ramdomwordc)
+
