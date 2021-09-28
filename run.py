@@ -1,5 +1,5 @@
 import random
-from time import sleep
+import time
 # Create 3 game options
 
 category = {1: "Movies", 2: "TV Shows", 3: "Cartoons"}
@@ -17,7 +17,7 @@ def game_menu():
     Displays the game menu and asks user to select an option of what game to play
     """
     print("Welcome to...")
-
+    time.sleep(1)
     print('''
     
      _
@@ -28,6 +28,8 @@ def game_menu():
     |_| |_|\__,_|_| |_|\__,  |_| |_| |_|\__,_ |_| |_|
                          __/ |
                         |__ /                        ''')
+    
+    time.sleep(1)
 
     for key in category:
         print("For",category[key],  "-> Press", key)
