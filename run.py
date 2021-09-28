@@ -30,6 +30,7 @@ def game_menu():
                         |__ /                        ''')
     
     time.sleep(1)
+    #print(insructions)
 
     for key in category:
         print("For",category[key],  "-> Press", key)
@@ -50,17 +51,118 @@ def get_random_word(option):
     word = random.choice(dataset[option])
     return word.upper()
 
-myword = game_menu()
+def hide_word():
+    """
+    Function prints row of stars in place of letters.
+    """
+    myword = game_menu()
 
-#myword = get_random_word(option_dataset) 
-  
-# Function prints row of stars in place of letters 
-for i in myword: 
-      
-    print("*", end = " ") 
-      
-# Calculating length of word 
-l = len(myword) 
-print("Word has %d letters" %l) 
+    for i in myword:         
+        print("*", end = " ") 
+        
+    # Calculating length of word 
+    l = len(myword) 
+    print("Word has %d letters" %l)
+
+def display_hangman(lives):
+    """
+    index stage that corresponts with the number of lives player have
+    """
+    stages = [  # final state: head, torso, both arms, and both legs
+                """
+                   --------
+                   |      |
+                   |      O
+                   |     \|/
+                   |      |
+                   |     / \.                
+                __| |______
+                           |_
+                _____________|_________
+                """,
+                # head, torso, both arms, and one leg
+                """
+                   --------
+                   |      |
+                   |      O
+                   |     \|/
+                   |      |
+                   |     /
+                __| |______
+                           |_
+                _____________|_________
+                   """,
+                # head, torso, and both arms
+                """
+                   --------
+                   |      |
+                   |      O
+                   |     \|/
+                   |      |
+                   |
+                __| |______
+                           |_
+                _____________|_________
+                   """,
+                # head, torso, and one arm
+                """
+                   --------
+                   |      |
+                   |      O
+                   |     \|
+                   |      |
+                   |
+                __| |______
+                           |_
+                _____________|_________
+                   """,
+                # head and torso
+                """
+                   --------
+                   |      |
+                   |      O
+                   |      |
+                   |      |
+                   |
+                __| |______
+                           |_
+                _____________|_________
+                """,
+                # head
+                """
+                   --------
+                   |      |
+                   |      O
+                   |
+                   |
+                   |
+                __| |______
+                           |_
+                _____________|_________
+                """,
+                # initial empty state
+                """
+                   --------
+                   |      |
+                   |
+                   |
+                   |
+                   |
+                __| |______
+                           |_
+                _____________|_________
+                """
+    ]
+    return stages[lives]
+
+def main():
+    
+    #game_menu()
+    i = 6
+    while i > 1:              
+        print(display_hangman(i))
+        i -= 1
+
+main()
 
 
