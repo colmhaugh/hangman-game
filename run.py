@@ -47,7 +47,6 @@ def game_menu():
 
     try:
        option_selected = int(input("Please choose an option: "))
-       
     except ValueError:
        clear()
        print("Invalid Choice!!! Try Again")
@@ -188,8 +187,57 @@ def display_hangman(lives):
 def main():
     
     hide_word()
-    
 
-main()
+
+if __name__ == "__main__":
+    clear()
+    
+    # The GAME LOOP
+    while True:
+
+        # Printing the game menu
+        print(" Welcome To The Classic Game Of ...")
+        time.sleep(1)
+        print('''
+               
+               _
+               | |
+               | |__   __ _ _ __    __ _ _ __ ___    __ _ _ __
+               | '_ \ / _` | '_ \ / _'  | '_ ` _ \ /  _` | '_  \.
+               | | | | (_| | | | | ( |  | | | | | |  ( | | | | |
+               |_| |_|\__,_|_| |_|\__,  |_| |_| |_|\__,_ |_| |_|
+                                    __/ |
+                                    |__ /                        ''')
+    
+        time.sleep(1)
+
+        for key in category:
+            print("For",category[key],  "-> Press", key)
+        print()
+        print("Please press", len(category)+1, "to quit") 
+        print()
+
+        # Handling the player category choice
+        try:
+            option_selected = int(input("Enter Your Choice = \n"))
+        except ValueError:
+            clear()
+            print("Invalid Choice!!! Try Again")
+            continue
+
+        # Sanity checks for input
+        if option_selected > len(category)+1:
+            clear()
+            print(f"{option_selected} is not an option.  Please select a number between 1 and 4")
+            continue
+
+        # The EXIT choice
+        elif option_selected == len(category)+1:
+            print()
+            print("Thank You For Playing!")
+            break
+
+            
+        
 
 
