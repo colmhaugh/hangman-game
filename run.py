@@ -28,11 +28,11 @@ def get_random_word(option):
     word = random.choice(dataset[option_dataset])
     return word.upper()
 
-def hide_word():
+def hide_word(gameword):
     """
     Function prints row of stars in place of letters.
     """
-    myword = game_menu()
+    myword = gameword
 
     for i in myword:         
         print("*", end = " ") 
@@ -132,9 +132,56 @@ def display_hangman(lives):
     ]
     return stages[lives]
 
-def main():
-    
-    hide_word()
+def play_game(word):
+   """
+   Will use the random word that is passed and use
+   the hide_word function to show * in stead of letters.   
+   """
+   hidden_word = hide_word(word)
+   guessed = False
+   guessed_letters = []
+   guessed_words = []
+   lives = 6
+   print(display_hangman(lives))
+   while not guessed and lives > 0:
+      guess = input("guess a letter or word: ").upper()
+      if len(guess) == 1 and guess.isalpha():
+         if guess in guessed_letters:
+            print("you already tried", guess, "!")
+         elif guess not in word:
+            print(guess, "isn't in the word :(")
+            lives -= 1
+            guessed_letters.append(guess)
+         else:
+            print("Nice one,", guess, "is in the word!")
+            guessed_letters.append(guess)
+            word_as_list = list(hidden_word)
+            indices = [i for i, letter in enumerate(word) if letter == guess]
+            for index in indices:
+               word_as_list[index] = guess
+            hidden_word = "".join(word_as_list)
+            if "_" not in hidden_word:
+               guessed = True
+      elif len(guess) == len(word) and guess.isalpha():
+         if guess in guessed_words:
+            print("You already tried ", guess, "!")
+         elif guess != word:
+            print(guess, " ist nicht das Wort :(")
+            lives -= 1
+            guessed_words.append(guess)
+         else:
+            guessed = True
+            hidden_word = word
+      else:
+         print("invalid input")
+      print(display_hangman(lives))
+      print(hidden_word)
+      print("\n")
+   if guessed:
+      print("Good Job, you guessed the word!")
+   else:
+      print("I'm sorry, but you ran out of tries. The word was " + word + ". Maybe next time!")
+
 
 
 if __name__ == "__main__":
@@ -185,7 +232,11 @@ if __name__ == "__main__":
             print("Thank You For Playing!")
             break
       
-        print(get_random_word(option_selected))        
+        game_word = get_random_word(option_selected)
+        play_game(game_word)
+        #hide_word(game_word)
+        break
+        
         #hide_word()
 
       
