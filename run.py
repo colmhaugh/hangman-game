@@ -17,67 +17,15 @@ dataset = {"Movies":["THE DARK KNIGHT", "JOKER", "THE GODFATHER", "GLADIATOR", "
 def clear():
     os.system("clear")
 
-# Creates a menu with 3 game options and a quit option
-def game_menu():
-    """
-    Displays the game menu and asks user to select an option of what game to play
-    """
-    print(" Welcome To The Classic Game Of ...")
-    time.sleep(1)
-    print('''
-    
-     _
-    | |
-    | |__   __ _ _ __    __ _ _ __ ___    __ _ _ __
-    | '_ \ / _` | '_ \ / _'  | '_ ` _ \ /  _` | '_  \.
-    | | | | (_| | | | | ( |  | | | | | |  ( | | | | |
-    |_| |_|\__,_|_| |_|\__,  |_| |_| |_|\__,_ |_| |_|
-                         __/ |
-                        |__ /                        ''')
-    
-    time.sleep(1)
-    #print(insructions)
-
-
-    for key in category:
-        print("For",category[key],  "-> Press", key)
-    print()
-    print("Please press", len(category)+1, "to quit") 
-    print()
-
-    try:
-       option_selected = int(input("Please choose an option: "))
-    except ValueError:
-       clear()
-       print("Invalid Choice!!! Try Again")
-
-    if option_selected > len(category)+1:
-        clear()
-        print("Not An Option!!! Try Again.")
-        
-        # The EXIT choice
-    elif option_selected == len(category)+1:
-        print()
-        print("Thank You For Playing!")
-
-    #option_selected = int(input("Please choose an option: "))
-
-    option_dataset = category[option_selected]
-    #print(option_dataset)
-    #print(get_random_word(option_dataset))
-    random_word = get_random_word(option_dataset)
-    
-    return random_word
-    #return get_random_word(option_dataset)
-    #print(get_random_word(option_dataset))
-
 def get_random_word(option):
     """
     Function to get a random word
     from the list of the category
     that the user selected
     """
-    word = random.choice(dataset[option])
+    option_selected = int(option)
+    option_dataset = category[option_selected]
+    word = random.choice(dataset[option_dataset])
     return word.upper()
 
 def hide_word():
@@ -236,7 +184,15 @@ if __name__ == "__main__":
             print()
             print("Thank You For Playing!")
             break
+      
+        print(get_random_word(option_selected))        
+        #hide_word()
 
+      
+    
+      
+    
+    
             
         
 
