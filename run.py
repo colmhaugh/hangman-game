@@ -1,7 +1,7 @@
 import random
 import os
 import time
-
+import re
 
 # Create 3 game options
 
@@ -39,8 +39,9 @@ def hide_word(gameword):
     
     print()
 
-    for i in myword:         
-        print("*", end = " ") 
+    for i in myword: 
+       if i != " ":       
+        print("*", end = " ")
     print()
     # Calculating length of word 
     l = len(myword) 
@@ -150,7 +151,9 @@ def play_game(word):
    # Takes the word that was passed into it and prints out 
    # * in place of the letters 
    #hidden_word = hide_word(word)
-   hidden_word = "*" * len(word)
+   hidden_word = re.sub(r'\S', '*', word)
+
+   #hidden_word = "*" * len(word)
    guessed = False
    # List of letters guessed. Will be appended with each guess
    guessed_letters = []   
