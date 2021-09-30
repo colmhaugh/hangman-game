@@ -25,6 +25,7 @@ def get_random_word(option):
     """
     option_selected = int(option)
     option_dataset = category[option_selected]
+    print(f"You have chosen {option_dataset}")
     word = random.choice(dataset[option_dataset])
     return word.upper()
 
@@ -150,7 +151,7 @@ def play_game(word):
    
    # Takes the word that was passed into it and prints out 
    # * in place of the letters 
-   #hidden_word = hide_word(word)
+   # Used re.sub so that it doesnt include spaces 
    hidden_word = re.sub(r'\S', '*', word)
 
    #hidden_word = "*" * len(word)
@@ -162,17 +163,19 @@ def play_game(word):
    lives = 6
    # Prints the image  of hangman
    print(display_hangman(lives))
+   # Prints the * and spaces for the hidden word
    print(hidden_word)
-   print("\n")
 
+   print("\n")
+   # While the user hasnt guessed the word and they still have lives play the game
    while not guessed and lives > 0:
       guess = input("Please guess a letter: ").upper()
-      # Checks if the user entered 1 word and it is s letter
+      # Checks if the user entered 1 letter and it is a letter in the alphabet
       if len(guess) == 1 and guess.isalpha():
          # Checks if the letter is in the guessed_letters list so it has already been guessed
          if guess in guessed_letters:
             # If the letter was already geussed the user will be told
-            print("you already tried", guess, "!")
+            print("You have alrady guessed", guess, ".  Please try a differnt letter")
          # Checks if the guessed letter is not in the hidden word   
          elif guess not in word:
             print(guess, "isn't in the word :(")
@@ -181,10 +184,11 @@ def play_game(word):
             # Add letter to the guessed_letters list
             guessed_letters.append(guess)
          else:
-            print("Nice one,", guess, "is in the word!")
+            print("Good guess,", guess, "is in the word!")
             # Add letter to the guessed_letters list
             guessed_letters.append(guess)
-            # 
+            # Makes a list of the hidden_word, if the word is in the list then the letter guessed 
+            # will replace the *
             word_as_list = list(hidden_word)
             indices = [i for i, letter in enumerate(word) if letter == guess]
             for index in indices:
@@ -194,13 +198,14 @@ def play_game(word):
                guessed = True      
       else:
          print("invalid input")
+      # Display the current image of hangman
       print(display_hangman(lives))
       print(hidden_word)
       print("\n")
    if guessed:
-      print("Good Job, you guessed the word!")
+      print("Congratlations, you have guessed the correct word")
    else:
-      print("I'm sorry, but you ran out of tries. The word was " + word + ". Maybe next time!")
+      print("Hard luck.  You have ran out of lives. The word was " + word +"." )
 
 
 
@@ -256,8 +261,8 @@ if __name__ == "__main__":
             break
       
         game_word = get_random_word(option_selected)
-        play_game(game_word)
-        #hide_word(game_word)
+        #print(option_selected)
+        #play_game(game_word)
         break
         
       
