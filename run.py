@@ -8,14 +8,14 @@ import re
 category = {1: "Movies", 2: "TV Shows", 3: "Cartoons"}
 
 # Each category will have a list or corresponding values
-dataset = {"Movies":["THE DARK KNIGHT", "JOKER", "THE GODFATHER", "GLADIATOR", "THE DEPARTED", "ALIEN", "MENENTO", "RESERVOIR DOGS", "FULL METAL JACKET"],\
-                 "TV Shows":["BREAKING BAD", "THE GOOD WIFE", "GAME OF THRONES", "THE WIRE", "SUCCESSION", "BILLIONS", "BAND OF BROTHERS", "CHERNOBYL", "TRUE DETECTIVE"],
-                 "Cartoons":["DUCKTALES", "ANIMANIACS", "TRANSFORMERS", "THE REAL GHOSTBUSTERS", "THUNDERCATS", "SPONGEBOB SQUAREPANTS", "GRAVITY FALLS", "SMURFS"]
+dataset = {"Movies": ["THE DARK KNIGHT", "JOKER", "THE GODFATHER", "GLADIATOR", "THE DEPARTED", "ALIEN", "MENENTO", "RESERVOIR DOGS", "FULL METAL JACKET"],
+            "TV Shows": ["BREAKING BAD", "THE GOOD WIFE", "GAME OF THRONES", "THE WIRE", "SUCCESSION", "BILLIONS", "BAND OF BROTHERS", "CHERNOBYL", "TRUE DETECTIVE"],
+            "Cartoons": ["DUCKTALES", "ANIMANIACS", "TRANSFORMERS", "THE REAL GHOSTBUSTERS", "THUNDERCATS", "SPONGEBOB SQUAREPANTS", "GRAVITY FALLS", "SMURFS"]
                  }
 
 # Funtion to clear te terminal
 def clear():
-    os.system("clear")
+   os.system("clear")
 
 def welcome():
    # Printing the game menu
@@ -258,21 +258,16 @@ def play_game(word):
       print("Hard luck.  You have ran out of lives. The word was " + word +"." )
       print()     
 
-   if play_again():
-      print("Play again")
-   else:
-      print("Not playing")
-
-
-
+  
 
 if __name__ == "__main__":
     clear()
     welcome()
     # The GAME LOOP
     while True:
-
-        
+        print("-------------------------------------------------")
+        print("----------PLEASE CHOOSE A CATEGORY---------------")
+        print("-------------------------------------------------")
         # Create a list of options from the categories
         for key in category:
             print("For",category[key],  "-> Press", key)
@@ -301,18 +296,12 @@ if __name__ == "__main__":
             print("Thank You For Playing.  See you again soon.")
             break
       
+        print()
         game_word = get_random_word(option_selected)
-        #print(option_selected)
         play_game(game_word)
-        #play_again()
-        break
+        if play_again():
+           print("Play again")
+        else:
+           print("Thank You For Playing.  See you again soon.")
+           break
         
-      
-    
-      
-    
-    
-            
-        
-
-
