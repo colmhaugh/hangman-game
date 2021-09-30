@@ -17,6 +17,25 @@ dataset = {"Movies":["THE DARK KNIGHT", "JOKER", "THE GODFATHER", "GLADIATOR", "
 def clear():
     os.system("clear")
 
+def welcome():
+   # Printing the game menu
+        print(" Welcome To The Classic Game Of ...")
+        # Add delay
+        time.sleep(1)
+        print('''
+               
+               _
+               | |
+               | |__   __ _ _ __    __ _ _ __ ___    __ _ _ __
+               | '_ \ / _` | '_ \ / _'  | '_ ` _ \ /  _` | '_  \.
+               | | | | (_| | | | | ( |  | | | | | |  ( | | | | |
+               |_| |_|\__,_|_| |_|\__,  |_| |_| |_|\__,_ |_| |_|
+                                    __/ |
+                                    |__ /                        ''')
+    
+        time.sleep(1)
+
+
 def get_random_word(option):
     """
     Function to get a random word
@@ -141,6 +160,37 @@ def display_hangman(lives):
     ]
     return stages[lives]
 
+def play_again():
+   print('Do you want to play again? (yes or no)')
+   return input().lower().startswith('y')
+
+""" def play_again():
+   print("Game Over")
+   print()
+   try:
+      play_again_choice = (input("Would you like to play again? (Y or N) \n")).upper()
+   except ValueError:
+      clear()
+      print("Invalid Choice! Try Again")      
+
+   # Checks if the user selected a number that was not on the list
+   if play_again_choice != ("Y" or "N"):
+      clear()
+      print(f"{play_again_choice} is not an option.  Please select Y or N")
+      continue
+      
+   elif play_again_choice == ("Y"):
+      print() 
+      print("Please chose an category:")
+      continue
+
+   # The EXIT choice number is the number of choices plus 1
+   elif play_again_choice == "N":
+      print()
+      print("Thank You For Playing.  See you again soon.")
+      break """
+      
+
 def play_game(word):
    """
    Will use the random word that is passed and use
@@ -203,34 +253,26 @@ def play_game(word):
       print("\n")
    if guessed:
       print("Congratlations, you have guessed the correct word")
+      print()   
    else:
       print("Hard luck.  You have ran out of lives. The word was " + word +"." )
+      print()     
+
+   if play_again():
+      print("Play again")
+   else:
+      print("Not playing")
+
 
 
 
 if __name__ == "__main__":
     clear()
-    
+    welcome()
     # The GAME LOOP
     while True:
 
-        # Printing the game menu
-        print(" Welcome To The Classic Game Of ...")
-        # Add delay
-        time.sleep(1)
-        print('''
-               
-               _
-               | |
-               | |__   __ _ _ __    __ _ _ __ ___    __ _ _ __
-               | '_ \ / _` | '_ \ / _'  | '_ ` _ \ /  _` | '_  \.
-               | | | | (_| | | | | ( |  | | | | | |  ( | | | | |
-               |_| |_|\__,_|_| |_|\__,  |_| |_| |_|\__,_ |_| |_|
-                                    __/ |
-                                    |__ /                        ''')
-    
-        time.sleep(1)
-
+        
         # Create a list of options from the categories
         for key in category:
             print("For",category[key],  "-> Press", key)
@@ -244,13 +286,13 @@ if __name__ == "__main__":
             option_selected = int(input("Enter Your Choice = \n"))
         except ValueError:
             clear()
-            print("Invalid Choice! Try Again")
+            print("Invalid Choice! Try Again \n")
             continue
 
         # Checks if the user selected a number that was not on the list
         if option_selected > len(category)+1:
             clear()
-            print(f"{option_selected} is not an option.  Please select a number between 1 and {len(category)+1} ")
+            print(f"{option_selected} is not an option.  Please select a number between 1 and {len(category)+1} \n")
             continue
 
         # The EXIT choice number is the number of choices plus 1
@@ -262,6 +304,7 @@ if __name__ == "__main__":
         game_word = get_random_word(option_selected)
         #print(option_selected)
         play_game(game_word)
+        #play_again()
         break
         
       
