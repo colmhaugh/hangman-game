@@ -34,17 +34,15 @@ def hide_word(gameword):
     Function prints row of stars in place of
     letters and  tells the user how many letters
     the word has
-    """
-    
-    myword = gameword
-    
+    """    
+    myword = gameword    
     print()
 
     for i in myword: 
        if i != " ":       
         print("*", end = " ")
     print()
-    # Calculating length of word 
+    # Calculating length of random random word
     l = len(myword) 
     print("Word has %d letters" %l)
 
@@ -153,8 +151,7 @@ def play_game(word):
    # * in place of the letters 
    # Used re.sub so that it doesnt include spaces 
    hidden_word = re.sub(r'\S', '*', word)
-
-   #hidden_word = "*" * len(word)
+   
    guessed = False
    # List of letters guessed. Will be appended with each guess
    guessed_letters = []   
@@ -200,6 +197,8 @@ def play_game(word):
          print("invalid input")
       # Display the current image of hangman
       print(display_hangman(lives))
+      print()
+      print(f"You have {lives} lives remaining")
       print(hidden_word)
       print("\n")
    if guessed:
@@ -245,24 +244,24 @@ if __name__ == "__main__":
             option_selected = int(input("Enter Your Choice = \n"))
         except ValueError:
             clear()
-            print("Invalid Choice!!! Try Again")
+            print("Invalid Choice! Try Again")
             continue
 
         # Checks if the user selected a number that was not on the list
         if option_selected > len(category)+1:
             clear()
-            print(f"{option_selected} is not an option.  Please select a number between 1 and 4")
+            print(f"{option_selected} is not an option.  Please select a number between 1 and {len(category)+1} ")
             continue
 
         # The EXIT choice number is the number of choices plus 1
         elif option_selected == len(category)+1:
             print()
-            print("Thank You For Playing!")
+            print("Thank You For Playing.  See you again soon.")
             break
       
         game_word = get_random_word(option_selected)
         #print(option_selected)
-        #play_game(game_word)
+        play_game(game_word)
         break
         
       
