@@ -179,33 +179,6 @@ def play_again():
     return input().lower().startswith('y')
 
 
-""" def play_again():
-   print("Game Over")
-   print()
-   try:
-      play_again_choice = (input("Would you like to play again? (Y or N) \n")).upper()
-   except ValueError:
-      clear()
-      print("Invalid Choice! Try Again")      
-
-   # Checks if the user selected a number that was not on the list
-   if play_again_choice != ("Y" or "N"):
-      clear()
-      print(f"{play_again_choice} is not an option.  Please select Y or N")
-      continue
-      
-   elif play_again_choice == ("Y"):
-      print() 
-      print("Please chose an category:")
-      continue
-
-   # The EXIT choice number is the number of choices plus 1
-   elif play_again_choice == "N":
-      print()
-      print("Thank You For Playing.  See you again soon.")
-      break """
-      
-
 def play_game(word):
     """
     Will use the random word that is passed and use
