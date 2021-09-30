@@ -8,22 +8,33 @@ import re
 category = {1: "Movies", 2: "TV Shows", 3: "Cartoons"}
 
 # Each category will have a list or corresponding values
-dataset = {"Movies": ["THE DARK KNIGHT", "JOKER", "THE GODFATHER", "GLADIATOR", "THE DEPARTED", "ALIEN", "MENENTO", "RESERVOIR DOGS", "FULL METAL JACKET"],
-            "TV Shows": ["BREAKING BAD", "THE GOOD WIFE", "GAME OF THRONES", "THE WIRE", "SUCCESSION", "BILLIONS", "BAND OF BROTHERS", "CHERNOBYL", "TRUE DETECTIVE"],
-            "Cartoons": ["DUCKTALES", "ANIMANIACS", "TRANSFORMERS", "THE REAL GHOSTBUSTERS", "THUNDERCATS", "SPONGEBOB SQUAREPANTS", "GRAVITY FALLS", "SMURFS"]
-                 }
+dataset = ({"Movies": [
+   "THE DARK KNIGHT", "JOKER", "THE GODFATHER",
+   "GLADIATOR", "THE DEPARTED", "ALIEN", "MENENTO",
+   "RESERVOIR DOGS", "FULL METAL JACKET"
+   ], "TV Shows": [
+      "BREAKING BAD", "THE GOOD WIFE",
+      "GAME OF THRONES", "THE WIRE", "SUCCESSION",
+      "BILLIONS", "BAND OF BROTHERS", "CHERNOBYL",
+      "TRUE DETECTIVE"
+      ], "Cartoons": [
+         "DUCKTALES", "ANIMANIACS", "TRANSFORMERS",
+         "THE REAL GHOSTBUSTERS", "THUNDERCATS", "SPONGEBOB SQUAREPANTS",
+         "GRAVITY FALLS", "SMURFS"]
+          })
 
-# Funtion to clear te terminal
+
+# Funtion to clear the terminal
 def clear():
-   os.system("clear")
+    os.system("clear")
+
 
 def welcome():
-   # Printing the game menu
-        print(" Welcome To The Classic Game Of ...")
-        # Add delay
-        time.sleep(1)
-        print('''
-               
+    # Printing the game menu
+    print(" Welcome To The Classic Game Of ...")
+    # Add delay
+    time.sleep(1)
+    print('''
                _
                | |
                | |__   __ _ _ __    __ _ _ __ ___    __ _ _ __
@@ -32,8 +43,7 @@ def welcome():
                |_| |_|\__,_|_| |_|\__,  |_| |_| |_|\__,_ |_| |_|
                                     __/ |
                                     |__ /                        ''')
-    
-        time.sleep(1)
+    time.sleep(1)
 
 
 def get_random_word(option):
@@ -48,26 +58,28 @@ def get_random_word(option):
     word = random.choice(dataset[option_dataset])
     return word.upper()
 
+
 def hide_word(gameword):
     """
     Function prints row of stars in place of
     letters and  tells the user how many letters
     the word has
-    """    
-    myword = gameword    
+    """
+    myword = gameword
     print()
 
-    for i in myword: 
-       if i != " ":       
-        print("*", end = " ")
+    for i in myword:
+        if i != " ":
+            print("*", end=" ")
     print()
     # Calculating length of random random word
-    l = len(myword) 
-    print("Word has %d letters" %l)
+    lench = len(myword)
+    print("Word has %d letters" % lench)
+
 
 def display_hangman(lives):
     """
-    Index stage that corresponts with the 
+    Index stage that corresponts with the
     number of lives player have.  User will
     start off with 6 lives and lose a life for
     every incorrect guess until they run our of
@@ -80,7 +92,7 @@ def display_hangman(lives):
                    |      O
                    |     \|/
                    |      |
-                   |     / \.                
+                   |     / \.
                 __| |______
                            |_
                 _____________|_________
@@ -160,9 +172,12 @@ def display_hangman(lives):
     ]
     return stages[lives]
 
+
 def play_again():
-   print('Do you want to play again? (yes or no)')
-   return input().lower().startswith('y')
+    print("Press Y if you want to play again")
+    print("Press any other letter to finish")
+    return input().lower().startswith('y')
+
 
 """ def play_again():
    print("Game Over")
@@ -192,73 +207,78 @@ def play_again():
       
 
 def play_game(word):
-   """
-   Will use the random word that is passed and use
-   the hide_word function to show * in stead of letters.   
-   """
-   
-   # Takes the word that was passed into it and prints out 
-   # * in place of the letters 
-   # Used re.sub so that it doesnt include spaces 
-   hidden_word = re.sub(r'\S', '*', word)
-   
-   guessed = False
-   # List of letters guessed. Will be appended with each guess
-   guessed_letters = []   
-   # User starts with 6 lives, will decrease by 1 for every incorrect 
-   # guess and will be passed to the display_hangman
-   lives = 6
-   # Prints the image  of hangman
-   print(display_hangman(lives))
-   # Prints the * and spaces for the hidden word
-   print(hidden_word)
+    """
+    Will use the random word that is passed and use
+    the hide_word function to show * in stead of letters.
+    """
+    # Takes the word that was passed into it and prints out
+    # * in place of the letters
+    # Used re.sub so that it doesnt include spaces
+    hidden_word = re.sub(r'\S', '*', word)
+    guessed = False
+    # List of letters guessed. Will be appended with each guess
+    guessed_letters = []
+    # User starts with 6 lives, will decrease by 1 for every incorrect
+    # guess and will be passed to the display_hangman
+    lives = 6
+    # Prints the image  of hangman
+    print(display_hangman(lives))
+    # Prints the * and spaces for the hidden word
+    print(hidden_word)
 
-   print("\n")
-   # While the user hasnt guessed the word and they still have lives play the game
-   while not guessed and lives > 0:
-      guess = input("Please guess a letter: ").upper()
-      # Checks if the user entered 1 letter and it is a letter in the alphabet
-      if len(guess) == 1 and guess.isalpha():
-         # Checks if the letter is in the guessed_letters list so it has already been guessed
-         if guess in guessed_letters:
-            # If the letter was already geussed the user will be told
-            print("You have alrady guessed", guess, ".  Please try a differnt letter")
-         # Checks if the guessed letter is not in the hidden word   
-         elif guess not in word:
-            print(guess, "isn't in the word :(")
+    print("\n")
+    # While the user hasn't guessed the word
+    # and they still have lives play the game
+    while not guessed and lives > 0:
+        guess = input("Please guess a letter: ").upper()
+        # Checks if the user entered 1 letter and
+        # it is a letter in the alphabet
+        if len(guess) == 1 and guess.isalpha():
+            # Checks if the letter is in the guessed_letters
+            # list so it has already been guessed
+            if guess in guessed_letters:
+                # If the letter was already geussed the user will be told
+                print("You have alrady guessed", guess)
+                print("Please try a differnt letter")
+                # Checks if the guessed letter is not in the hidden word
+            elif guess not in word:
+                print(guess, "isn't in the word :(")
             # User loses a life which will be passed to hangman image
-            lives -= 1
-            # Add letter to the guessed_letters list
-            guessed_letters.append(guess)
-         else:
-            print("Good guess,", guess, "is in the word!")
-            # Add letter to the guessed_letters list
-            guessed_letters.append(guess)
-            # Makes a list of the hidden_word, if the word is in the list then the letter guessed 
-            # will replace the *
-            word_as_list = list(hidden_word)
-            indices = [i for i, letter in enumerate(word) if letter == guess]
-            for index in indices:
-               word_as_list[index] = guess
-            hidden_word = "".join(word_as_list)
-            if "*" not in hidden_word:
-               guessed = True      
-      else:
-         print("invalid input")
-      # Display the current image of hangman
-      print(display_hangman(lives))
-      print()
-      print(f"You have {lives} lives remaining")
-      print(hidden_word)
-      print("\n")
-   if guessed:
-      print("Congratlations, you have guessed the correct word")
-      print()   
-   else:
-      print("Hard luck.  You have ran out of lives. The word was " + word +"." )
-      print()     
+                lives -= 1
+                # Add letter to the guessed_letters list
+                guessed_letters.append(guess)
+            else:
+                print("Good guess,", guess, "is in the word!")
+                # Add letter to the guessed_letters list
+                guessed_letters.append(guess)
+                # Makes a list of the hidden_word,
+                # if the word is in the list then
+                # the letter guessed will replace the *
+                word_as_list = list(hidden_word)
+                indices = [
+                   i for i, letter in enumerate(word) if letter == guess
+                   ]
+                for index in indices:
+                    word_as_list[index] = guess
+                    hidden_word = "".join(word_as_list)
+                if "*" not in hidden_word:
+                    guessed = True
+        else:
+            print("invalid input")
+        # Display the current image of hangman
+        print(display_hangman(lives))
+        print()
+        print(f"You have {lives} lives remaining")
+        print(hidden_word)
+        print("\n")
+    if guessed:
+        print("Congratlations, you have guessed the correct word")
+        print()
+    else:
+        print("Hard luck.  You have ran out of lives.")
+        print("The word was " + word + ".")
+        print()
 
-  
 
 if __name__ == "__main__":
     clear()
@@ -270,10 +290,11 @@ if __name__ == "__main__":
         print("-------------------------------------------------")
         # Create a list of options from the categories
         for key in category:
-            print("For",category[key],  "-> Press", key)
+            print("For", category[key],  "-> Press", key)
         print()
-        # Add an option for quitting which will be 1 greater then the ammount of categories on the list
-        print("Please press", len(category)+1, "to quit") 
+        # Add an option for quitting which will be 1
+        # greater then the ammount of categories on the list
+        print("Please press", len(category)+1, "to quit")
         print()
 
         # Handling the player category choice
@@ -287,7 +308,8 @@ if __name__ == "__main__":
         # Checks if the user selected a number that was not on the list
         if option_selected > len(category)+1:
             clear()
-            print(f"{option_selected} is not an option.  Please select a number between 1 and {len(category)+1} \n")
+            print(f"{option_selected} is not an option.")
+            print(f"Please select a number between 1 and {len(category)+1} \n")
             continue
 
         # The EXIT choice number is the number of choices plus 1
@@ -295,13 +317,16 @@ if __name__ == "__main__":
             print()
             print("Thank You For Playing.  See you again soon.")
             break
-      
+
         print()
         game_word = get_random_word(option_selected)
         play_game(game_word)
+        # When  the game is complete it calls the play again function
+        # If the user presses Y they play again.
+        # If the user presses any other key loop will break
+        # The game will be over
         if play_again():
-           print("Play again")
+            print("Play again")
         else:
-           print("Thank You For Playing.  See you again soon.")
-           break
-        
+            print("Thank You For Playing.  See you again soon.")
+            break
