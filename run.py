@@ -146,20 +146,24 @@ def play_game(word):
    Will use the random word that is passed and use
    the hide_word function to show * in stead of letters.   
    """
-   #Takes the word that was passed into it and prints out 
+   
+   # Takes the word that was passed into it and prints out 
    # * in place of the letters 
-   hidden_word = hide_word(word)
+   #hidden_word = hide_word(word)
+   hidden_word = "*" * len(word)
    guessed = False
-   #List of letters guessed. Will be appended with each guess
+   # List of letters guessed. Will be appended with each guess
    guessed_letters = []   
-   #User starts with 6 lives, will decrease by 1 for every incorrect 
-   #guess and will be passed to the display_hangman
+   # User starts with 6 lives, will decrease by 1 for every incorrect 
+   # guess and will be passed to the display_hangman
    lives = 6
-   #Prints the image  of hangman
+   # Prints the image  of hangman
    print(display_hangman(lives))
+   print(hidden_word)
+   print("\n")
 
    while not guessed and lives > 0:
-      guess = input("guess a letter or word: ").upper()
+      guess = input("Please guess a letter: ").upper()
       # Checks if the user entered 1 word and it is s letter
       if len(guess) == 1 and guess.isalpha():
          # Checks if the letter is in the guessed_letters list so it has already been guessed
@@ -183,7 +187,7 @@ def play_game(word):
             for index in indices:
                word_as_list[index] = guess
             hidden_word = "".join(word_as_list)
-            if "_" not in hidden_word:
+            if "*" not in hidden_word:
                guessed = True      
       else:
          print("invalid input")
