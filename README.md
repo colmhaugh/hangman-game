@@ -1,11 +1,14 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
 # HANGMAN
 
 Hangman is a Python terminal game, which runs in the Code Institute mock terminal on Heroku.
 
 Hangman is a popular word guessing game where the player attempts to build a missing word by guessing one letter at a time. Each incorrect guess brings you closer to being "Hanged".  The game ends when the user runs out of lives or when the player correctly guesses all the letters of the missing word.
 
+More information can be found on the Hangman [Wikipedia](https://en.wikipedia.org/wiki/Hangman_(game))
+
+![Responsice Mockup](https://github.com/colmhaugh/hangman-game/blob/main/images/am_i_responsive.JPG)
+
+The live version of my project is available [here](https://hangman-cip3.herokuapp.com/)
 
 ## How to play
 
@@ -35,9 +38,15 @@ To win the game, the player must guess the correct word before loosing all their
 
     * Welcomes the user to the game
 
+    ![Welcome Graphic](https://github.com/colmhaugh/hangman-game/blob/main/images/Welcome_Graphic.JPG)
+
     * Gives brief instructions on how to play
 
+    ![Instructions](https://github.com/colmhaugh/hangman-game/blob/main/images/Instructions.JPG)
+
     * A graphic of hangman is printed on the screen
+
+    ![Hangman Graphic](https://github.com/colmhaugh/hangman-game/blob/main/images/Choice_with_hangman.JPG)
 
 * Game Menu    
 
@@ -50,6 +59,8 @@ To win the game, the player must guess the correct word before loosing all their
         * Cartoons
 
         * Quit
+    
+    ![Menu Category](https://github.com/colmhaugh/hangman-game/blob/main/images/Menu_Category.JPG)
 
 * Input validation and error-checking
 
@@ -93,6 +104,8 @@ To win the game, the player must guess the correct word before loosing all their
 
     * Used "re.sub" to have a space insted of a * for a blank space if there were multiple words in the random value
 
+    ![Game with blanks](https://github.com/colmhaugh/hangman-game/blob/main/images/Game_with_blank.JPG)
+
     * The player can enter their letters here 
 
         * When a correct letter is guessed, the user gets a prompt to say it is correct and the "*" in the hidden word is replaced with the correct letter
@@ -105,13 +118,13 @@ To win the game, the player must guess the correct word before loosing all their
 
 I have manually tested this project by doing the following:
 
-    * Passed the code through a PEP8 linter
+   * Passed the code through a PEP8 linter
 
-    * Tested main menu secton by entering invalid inputs like a number greater than 4 and entering letters and characters
+   * Tested main menu secton by entering invalid inputs like a number greater than 4 and entering letters and characters
 
-    * Tested the game by entering the same letter twice, entering multiple letters, entering numbers and characters that are not in the alphabet
+   * Tested the game by entering the same letter twice, entering multiple letters, entering numbers and characters that are not in the alphabet
 
-    *Tested the play again function by entering any key to exit and by entering "y" or "yes" to play again
+   * Tested the play again function by entering any key to exit and by entering "y" or "yes" to play again
 
 ## Bugs
 
@@ -135,17 +148,17 @@ I have manually tested this project by doing the following:
 
 This project was deployed using Code Institute's mock terminal for Heroku.
 
-    * Steps for deployment:
+   * Steps for deployment:
 
-        * Fork or clone this repository
+       * Fork or clone this repository
 
-        * Create a new Heroku app
+       * Create a new Heroku app
 
-        * Set the buildpacks to Python and NodeJS in that order
+       * Set the buildpacks to Python and NodeJS in that order
 
-        * Link the Heroku app to the repository
+       * Link the Heroku app to the repository
 
-        * Click on Deploy
+       * Click on Deploy
 
 ## Credits
 
