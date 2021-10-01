@@ -176,7 +176,7 @@ def display_hangman(lives):
 def play_again():
     print("Press Y if you want to play again")
     print("Press any other letter to finish")
-    return input().lower().startswith('y')
+    return input().lower().startswith("Y\n")
 
 
 def play_game(word):
@@ -203,7 +203,7 @@ def play_game(word):
     # While the user hasn't guessed the word
     # and they still have lives play the game
     while not guessed and lives > 0:
-        guess = input("Please guess a letter: ").upper()
+        guess = input("Please guess a letter: \n").upper()
         # Checks if the user entered 1 letter and
         # it is a letter in the alphabet
         if len(guess) == 1 and guess.isalpha():
