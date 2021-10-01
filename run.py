@@ -182,7 +182,7 @@ def display_hangman(lives):
 
 def play_again():
     print("Press Y to play again and any key to finish")
-    
+
     return input().lower().startswith("y")
 
 
@@ -257,7 +257,7 @@ def play_game(word):
         print()
     else:
         print("Hard luck.  You have ran out of lives.")
-        print(f"The word was {word}.")
+        print(f"The answer was {word}.")
         print()
 
 
