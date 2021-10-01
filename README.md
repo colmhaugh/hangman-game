@@ -115,17 +115,17 @@ I have manually tested this project by doing the following:
 
 ## Bugs
 
-# Solved Bugs
+### Solved Bugs
 
 * There were multiple errors after passing the code through PEP8.  Spaces not multiple of 4 and text length was too long.  Manually fixed all of these
 
 * Solved the issue with multiple words that had spaces.  I didn't want a * where there was a space so used re.sub to solve this issue
 
-# Remaining Bugs
+### Remaining Bugs
 
 * None
 
-# Validator testing
+### Validator testing
 
 * PEP8
 
