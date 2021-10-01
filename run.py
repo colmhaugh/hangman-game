@@ -211,17 +211,17 @@ def play_game(word):
             # list so it has already been guessed
             if guess in guessed_letters:
                 # If the letter was already geussed the user will be told
-                print("You have alrady guessed", guess)
+                print(f"You have alrady guessed {guess}")
                 print("Please try a differnt letter")
                 # Checks if the guessed letter is not in the hidden word
             elif guess not in word:
-                print(guess, "isn't in the word :(")
+                print(f"{guess} isn't in the word :(")
             # User loses a life which will be passed to hangman image
                 lives -= 1
                 # Add letter to the guessed_letters list
                 guessed_letters.append(guess)
             else:
-                print("Good guess,", guess, "is in the word!")
+                print(f"Good guess, {guess}, is in the word!")
                 # Add letter to the guessed_letters list
                 guessed_letters.append(guess)
                 # Makes a list of the hidden_word,
@@ -241,6 +241,7 @@ def play_game(word):
         # Display the current image of hangman
         print(display_hangman(lives))
         print()
+        # Display the ammount of lives left
         print(f"You have {lives} lives remaining")
         print(hidden_word)
         print("\n")
@@ -249,7 +250,7 @@ def play_game(word):
         print()
     else:
         print("Hard luck.  You have ran out of lives.")
-        print("The word was " + word + ".")
+        print(f"The word was {word}.")
         print()
 
 
