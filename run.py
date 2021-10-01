@@ -174,9 +174,9 @@ def display_hangman(lives):
 
 
 def play_again():
-    print("Press Y if you want to play again")
-    print("Press any other letter to finish")
-    return input().lower().startswith("Y\n")
+    print("Press Y to play again and any key to finish")
+    
+    return input().lower().startswith("y")
 
 
 def play_game(word):
@@ -259,9 +259,9 @@ if __name__ == "__main__":
     welcome()
     # The GAME LOOP
     while True:
-        print("-------------------------------------------------")
-        print("----------PLEASE CHOOSE A CATEGORY---------------")
-        print("-------------------------------------------------")
+        print("---------------------------------------------------")
+        print("---------- PLEASE CHOOSE A CATEGORY ---------------")
+        print("---------------------------------------------------")
         # Create a list of options from the categories
         for key in category:
             print("For", category[key],  "-> Press", key)
@@ -301,6 +301,7 @@ if __name__ == "__main__":
         # The game will be over
         if play_again():
             print("Play again")
+            continue
         else:
             print("Thank You For Playing.  See you again soon.")
             break
