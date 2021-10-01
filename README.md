@@ -8,7 +8,7 @@ More information can be found on the Hangman [Wikipedia](https://en.wikipedia.or
 
 ![Responsice Mockup](https://github.com/colmhaugh/hangman-game/blob/main/images/am_i_responsive.JPG)
 
-The live version of my project is available [here](https://hangman-cip3.herokuapp.com/)
+[Here is the live version of my project](https://hangman-cip3.herokuapp.com/)
 
 ## How to play
 
@@ -118,7 +118,7 @@ To win the game, the player must guess the correct word before loosing all their
 
 I have manually tested this project by doing the following:
 
-   * Passed the code through a PEP8 linter
+   * Passed the code through a [PEP8 linter](http://pep8online.com/)
 
    * Tested main menu secton by entering invalid inputs like a number greater than 4 and entering letters and characters
 
@@ -170,6 +170,6 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 
 * Stackoverflow for having spaces between multiple words
 
-* W3school for reminders and tips
+* Refresh python code from Code Institute lessons and from [w3school](https://www.w3schools.com)
 
 
