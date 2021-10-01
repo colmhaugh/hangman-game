@@ -10,7 +10,7 @@ category = {1: "Movies", 2: "TV Shows", 3: "Cartoons"}
 # Each category will have a list or corresponding values
 dataset = ({"Movies": [
    "THE DARK KNIGHT", "JOKER", "THE GODFATHER",
-   "GLADIATOR", "THE DEPARTED", "ALIEN", "MENENTO",
+   "GLADIATOR", "THE DEPARTED", "ALIEN", "MEMENTO",
    "RESERVOIR DOGS", "FULL METAL JACKET"
    ], "TV Shows": [
       "BREAKING BAD", "THE GOOD WIFE",
@@ -31,7 +31,7 @@ def clear():
 
 def welcome():
     # Printing the game menu
-    print(" Welcome To The Classic Game Of ...")
+    print(" Welcome To .....")
     # Add delay
     time.sleep(1)
     print('''
@@ -44,6 +44,13 @@ def welcome():
                                     __/ |
                                     |__ /                        ''')
     time.sleep(1)
+
+    print("The object of the game is simple.....")
+    print("Select a category.")
+    print("Guess the word, one letter at a time.")
+    print("You will have 6 lives so be carefull.")
+    print()
+    print("Good Luck and ENJOY")
 
 
 def get_random_word(option):
