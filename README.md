@@ -114,6 +114,20 @@ To win the game, the player must guess the correct word before all their lives a
 
     * When the game is completed, the user has an option to play again or to quit
 
+## Technologies
+
+### Languages
+
+* Python3
+
+### Libraries
+
+* Random is used to get a random title from the selected list
+
+* re is imported.  re.sub is used to search and replace so that no "*" is used for a space
+
+* Time is used to give a delay to control the welcome display
+
 ## Testing
 
 I have manually tested this project by doing the following:
