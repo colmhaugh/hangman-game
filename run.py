@@ -26,6 +26,9 @@ dataset = ({"Movies": [
 
 # Funtion to clear the terminal
 def clear():
+    """
+    Function to clear the terminal
+    """
     os.system("clear")
 
 

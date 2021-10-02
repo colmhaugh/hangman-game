@@ -168,8 +168,8 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 
 * Code Institute for the deployment terminal
 
+* Code ideas for the Handman game from [AskPython](https://www.askpython.com/python/examples/hangman-game-in-python)
+
 * Stackoverflow for having spaces between multiple words
 
 * Refresh python code from Code Institute lessons and from [w3school](https://www.w3schools.com)
-
-
