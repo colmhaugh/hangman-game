@@ -30,6 +30,10 @@ def clear():
 
 
 def welcome():
+    """
+    Function to run to welcome the user
+    when the run the program
+    """
     # Printing the game menu
     print(" Welcome To .....")
     # Add delay
@@ -66,24 +70,6 @@ def get_random_word(option):
     return word.upper()
 
 
-def hide_word(gameword):
-    """
-    Function prints row of stars in place of
-    letters and  tells the user how many letters
-    the word has
-    """
-    myword = gameword
-    print()
-
-    for i in myword:
-        if i != " ":
-            print("*", end=" ")
-    print()
-    # Calculating length of random random word
-    lench = len(myword)
-    print("Word has %d letters" % lench)
-
-
 def display_hangman(lives):
     """
     Index stage that corresponts with the
@@ -92,7 +78,7 @@ def display_hangman(lives):
     every incorrect guess until they run our of
     lives.
     """
-    stages = [  # final state: head, torso, both arms, and both legs
+    stages = [  # final state: full body
                 """
                    --------
                    |      |
@@ -104,7 +90,7 @@ def display_hangman(lives):
                            |_
                 _____________|_________
                 """,
-                # head, torso, both arms, and one leg
+                # Gallows, head, torso, both arms, and one leg
                 """
                    --------
                    |      |
@@ -116,7 +102,7 @@ def display_hangman(lives):
                            |_
                 _____________|_________
                    """,
-                # head, torso, and both arms
+                # Gallows, head, torso, and both arms
                 """
                    --------
                    |      |
@@ -128,7 +114,7 @@ def display_hangman(lives):
                            |_
                 _____________|_________
                    """,
-                # head, torso, and one arm
+                # Gallows, head, torso, and one arm
                 """
                    --------
                    |      |
@@ -140,7 +126,7 @@ def display_hangman(lives):
                            |_
                 _____________|_________
                    """,
-                # head and torso
+                # Gallows, head and torso
                 """
                    --------
                    |      |
@@ -152,7 +138,7 @@ def display_hangman(lives):
                            |_
                 _____________|_________
                 """,
-                # head
+                # Gallows and head
                 """
                    --------
                    |      |
@@ -164,7 +150,7 @@ def display_hangman(lives):
                            |_
                 _____________|_________
                 """,
-                # initial empty state
+                # initial empty state, just the gallows
                 """
                    --------
                    |      |
@@ -181,6 +167,11 @@ def display_hangman(lives):
 
 
 def play_again():
+    """
+    Function called when game is completed
+    to see if user wants to play again and return
+    to main menu or if they want to quit
+    """
     print("Press Y to play again and any key to finish")
 
     return input().lower().startswith("y")
@@ -188,8 +179,9 @@ def play_again():
 
 def play_game(word):
     """
-    Will use the random word that is passed and use
-    the hide_word function to show * in stead of letters.
+    Game function using the random word generated,
+    hides the word and prompts the user to
+    guess the word
     """
     # Takes the word that was passed into it and prints out
     # * in place of the letters
@@ -222,13 +214,13 @@ def play_game(word):
                 print("Please try a differnt letter")
                 # Checks if the guessed letter is not in the hidden word
             elif guess not in word:
-                print(f"{guess} isn't in the word :(")
+                print(f"{guess} isn't in the title :(")
             # User loses a life which will be passed to hangman image
                 lives -= 1
                 # Add letter to the guessed_letters list
                 guessed_letters.append(guess)
             else:
-                print(f"Good guess, {guess}, is in the word!")
+                print(f"Good guess, {guess}, is in the title!")
                 # Add letter to the guessed_letters list
                 guessed_letters.append(guess)
                 # Makes a list of the hidden_word,
@@ -253,7 +245,7 @@ def play_game(word):
         print(hidden_word)
         print("\n")
     if guessed:
-        print("Congratlations, you have guessed the correct word")
+        print("Congratlations, you have guessed the correct title")
         print()
     else:
         print("Hard luck.  You have ran out of lives.")
